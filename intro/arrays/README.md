@@ -76,3 +76,7 @@ The idea would be to iterate over every element of the array counting or preform
 I chose cpp for this. the results can be seen here: [main.cpp](./main.cpp).
 
 As mentioned above the first element in the array and the address of the array variable are the same. thats why when iterating over a cpp array one of the patterns is to use the the sizeof(arr)/sizeof(arr[0]). This formula calculates the total memory size of the array divided by the memory size of each element to get the number of elements in an array.
+
+
+## Video
+[Canvas Video](https://sdccd.us-west-2.instructuremedia.com/embed/571a06e1-c18d-475d-85ef-c0c8c9378272)
