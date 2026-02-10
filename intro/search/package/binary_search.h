@@ -21,7 +21,8 @@ int binarySearch(const T *vec, size_t size, const T &target, int &steps)
         int mid = left + (right - left) / 2;
         // if vec[mid] == target return the target
         if (vec[mid] == target)
-            return mid;
+            // cast and return index
+            return static_cast<int>(mid);
         else if (vec[mid] < target)
             // if the target is larger than vec[mid] update left
             left = mid + 1;

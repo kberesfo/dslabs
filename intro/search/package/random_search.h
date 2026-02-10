@@ -12,6 +12,7 @@
 template <typename T>
 int randomSearch(const T *vec, size_t size, const T &target, int &steps)
 {
+    // reset steps
     steps = 0;
     if (size == 0)
         return -1;
@@ -40,8 +41,11 @@ int randomSearch(const T *vec, size_t size, const T &target, int &steps)
     // preform linear search using shuffled indexes
     for (size_t k = 0; k < size; ++k)
     {
+        // increment steps
         ++steps;
+        // get the index from shuffled indexes
         size_t i = idx[k];
+        // check if vec[i] is target
         if (vec[i] == target)
             return static_cast<int>(i);
     }
