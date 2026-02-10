@@ -55,6 +55,6 @@
       - Random and Linear both have the same time complexity. Despite the fact that in the random search implementation we iterate over the length of the array twice. Because it would be 2n we drop the constant and consider it O(N) time complexity.
       - Linear search iterates over early elements more frequently than elements at the end of the array. If that isn't desired behavior random search offers an alternative.
 
-   ## Video
+   ### Video
 
    [Canvas Video](https://sdccd.us-west-2.instructuremedia.com/embed/3b84de61-ddb5-4eb7-8387-0639ad7784d5)
