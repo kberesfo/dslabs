@@ -15,16 +15,21 @@
 template <typename T>
 int binarySearch(const T *vec, size_t size, const T &target, int &steps)
 {
+    // reset steps
     steps = 0;
+    // if size == 0 return not found
     if (size == 0)
         return -1;
-
+    // left index
     int left = 0;
+    // right index
     int right = static_cast<int>(size) - 1;
-
+    // if left is larger than right element isn't in the array
     while (left <= right)
     {
+        // increment steps
         ++steps;
+        // calculate mid
         int mid = left + (right - left) / 2;
         // if vec[mid] == target return the target
         if (vec[mid] == target)
