@@ -52,4 +52,5 @@
       - [Random Search](./package/random_search.h)
 
    1. Finally, compare and contrast the randomized search algorithm with linear search and binary search in terms of time complexity, data requirements (such as ordering), and practical efficiency. Discuss scenarios in which each approach may be preferred, highlighting the advantages and limitations of randomized search relative to linear and binary search.
-      - Random and Linear both have the same time complexity. Despite the fact that in the random search implemenation we iterate over the length of the array twice. Because it would be 2n we drop the constant and consider it O(N) time complexity.
+      - Random and Linear both have the same time complexity. Despite the fact that in the random search implementation we iterate over the length of the array twice. Because it would be 2n we drop the constant and consider it O(N) time complexity.
+      - Linear search iterates over early elements more frequently than elements at the end of the array. If that isn't desired behavior random search offers an alternative.

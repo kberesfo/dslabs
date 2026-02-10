@@ -5,6 +5,13 @@
 #include <vector>
 #include <iostream>
 
+/// @brief Performs a binary search for a target value in an array.
+/// @tparam T Type of elements stored in the array.
+/// @param vec Pointer to the array to search.
+/// @param size Number of elements in the array.
+/// @param target Value to search for.
+/// @param steps Output parameter that records the number of comparisons performed.
+/// @return Index of the target if found; -1 if the target is not present.
 template <typename T>
 int binarySearch(const T *vec, size_t size, const T &target, int &steps)
 {

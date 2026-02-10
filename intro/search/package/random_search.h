@@ -6,9 +6,13 @@
 #include <random>
 #include <iostream>
 
-// Random search: checks elements in a random order
-// Returns index if found, -1 otherwise
-// steps counts the number of comparisons
+/// @brief Performs a random search for a target value in an array.
+/// @tparam T Type of elements stored in the array.
+/// @param vec Pointer to the array to search.
+/// @param size Number of elements in the array.
+/// @param target Value to search for.
+/// @param steps Output parameter that records the number of comparisons performed.
+/// @return Index of the target if found; -1 if the target is not present.
 template <typename T>
 int randomSearch(const T *vec, size_t size, const T &target, int &steps)
 {
