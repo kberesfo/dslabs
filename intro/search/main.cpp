@@ -25,7 +25,7 @@ int main()
 
     cout << "Linear search idx: " << linearSearch(big_vec.data(), big_vec.size(), -1, steps)
          << " steps: " << steps << "\n";
-
+    // this shows true worst case
     cout << "Binary search idx: " << binarySearch(big_vec.data(), big_vec.size(), 100000, steps)
          << " steps: " << steps << "\n";
 
