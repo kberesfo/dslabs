@@ -11,9 +11,9 @@
    - `log(100_000)/Log(2) ~= 17`
    - `O(log(N))` Time complexity
 1. Write a C++ program that implements both linear search and binary search algorithms using an array of 100,000 elements. The program should record and report the number of steps (comparisons) performed during each search operation. In addition, analyze and justify the observed behavior by providing a theoretical explanation using Big-O notation, demonstrating why linear search exhibits $O(N)$ complexity and binary search exhibits $O(\log N)$ complexity.
-   - [Linear Search](./package/linear_search.h)
+   - [Linear Search](./include/search/linear_search.h)
      - Iterates over the array until the target is found. `O(N)`
-   - [Binary Search](./package/binary_search.h)
+   - [Binary Search](./include/search/binary_search.h)
      - **Requires array to be sorted.**
      - Half the remaining elements every iteration `O(log2(N))`
 1. Random Search
@@ -49,7 +49,7 @@
         https://stackoverflow.com/questions/42321370/fisher-yates-shuffling-algorithm-in-c
 
    1. Then, implement the algorithm in C++, using only the following standard headers: `<vector>` for data storage, `<random>` for random index generation, and `<iostream>` for input and output. The implementation should track and report the number of comparisons performed during the search.
-      - [Random Search](./package/random_search.h)
+      - [Random Search](./include/search/random_search.h)
 
    1. Finally, compare and contrast the randomized search algorithm with linear search and binary search in terms of time complexity, data requirements (such as ordering), and practical efficiency. Discuss scenarios in which each approach may be preferred, highlighting the advantages and limitations of randomized search relative to linear and binary search.
       - Random and Linear both have the same time complexity. Despite the fact that in the random search implementation we iterate over the length of the array twice. Because it would be 2n we drop the constant and consider it O(N) time complexity.

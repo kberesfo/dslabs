@@ -2,9 +2,7 @@
 #include <vector>
 #include <iostream>
 
-#include "package/random_search.h"
-#include "package/linear_search.h"
-#include "package/binary_search.h"
+#include "search/search.h"
 
 using namespace std;
 
