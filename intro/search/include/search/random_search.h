@@ -4,7 +4,6 @@
 
 #include <vector>
 #include <random>
-#include <iostream>
 
 /// @brief Performs a random search for a target value in an array.
 /// @tparam T Type of elements stored in the array.

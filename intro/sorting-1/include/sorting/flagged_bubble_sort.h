@@ -1,4 +1,4 @@
-// bubble_sort.h
+// flagged_bubble_sort.h
 #ifndef FLAGGED_BUBBLE_SORT_H
 #define FLAGGED_BUBBLE_SORT_H
 
@@ -10,17 +10,22 @@
 /// @param size Number of elements.
 /// @param steps Counts the number of comparisons.
 template <typename T>
-void bubbleSort(T *vec, size_t size, int &steps)
+void flaggedBubbleSort(T *vec, size_t size, int &steps)
 {
+    // reset steps
     steps = 0;
-
+    // declare flag in scope of while
+    bool swapped = false;
     do
     {
         // reset flag
-        bool swapped = false;
-        for (int i = 0; i < size - 1; ++i)
+        swapped = false;
+        // iterate over array
+        for (size_t i = 0; i < size - 1; ++i)
         {
+            // increment steps
             ++steps;
+            // check if left > right
             if (vec[i] > vec[i + 1])
             {
                 std::swap(vec[i], vec[i + 1]);
@@ -28,9 +33,9 @@ void bubbleSort(T *vec, size_t size, int &steps)
                 swapped = true;
             }
         }
-    } while (swapped)
-
-        return;
+    } while (swapped);
+    // exit function
+    return;
 }
 
 #endif
