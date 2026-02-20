@@ -32,6 +32,7 @@ void flaggedBubbleSort(T *vec, size_t size, int &steps)
                 // if a swap occurs then the sort was required
                 swapped = true;
             }
+            
         }
     } while (swapped);
     // exit function
