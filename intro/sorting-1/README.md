@@ -63,3 +63,7 @@
 
    - There are **nested** for loops so there are $N * N/2$ steps.
    - The Time Complexity for this would be $O(N^2)$
+
+## Video
+
+[Canvas Video](https://sdccd.us-west-2.instructuremedia.com/embed/aa2e58ee-7ed3-46dc-a831-774453c2fb7c)
