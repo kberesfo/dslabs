@@ -12,35 +12,25 @@ Understand the working of insertion sort algorithm algorithms and evaluate the a
 
    **Best Case**:
 
-   $$
-   \sum_{i=1}^{N-1} 1 = N-1
-   $$
+   $\sum_{i=1}^{N-1} 1 = N-1$
 
    **Worst Case**:
 
-   $$
-   \sum_{i=1}^{N-1} i = \frac{(N-1)N}{2}
-   $$
+   $\sum_{i=1}^{N-1} i = \frac{(N-1)N}{2}$
 
    **Avg Case**:
 
-   $$
-   \frac12\sum_{i=1}^{N-1} i
-   $$
+   $\frac12\sum_{i=1}^{N-1} i$
 
-   $$
-   \frac12\sum_{i=1}^{N-1} i = \frac12\frac{(N-1)N}{2} = \frac{(N-1)N}{4}
-   $$
+   $\frac12\sum_{i=1}^{N-1} i = \frac12\frac{(N-1)N}{2} = \frac{(N-1)N}{4}$
 
-   $$
-   \frac{N^2-N}{4}
-   $$
+   $\frac{N^2-N}{4}$
 
    Since $\frac{N^2-N}{4}$ is dominated by $N^2$, insertion sort runs in:
 
-   $$
+   $
    T(N) \in O(N^2).
-   $$
+   $
 
 1. At the start of the insertion sort, the index of the inspected value is set to 1. Change the index of the inspected value and verify that the total number of operations equals 20. Consider the worst-case scenario. Use N=5, where N is the number of elements. (Note: Comparisons and Insertions so a factor of 2 is added)
 
