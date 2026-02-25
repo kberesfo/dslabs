@@ -2,8 +2,6 @@
 #ifndef INSERTION_SORT_H
 #define INSERTION_SORT_H
 
-#include <vector>
-
 /// @brief Sorts the array in ascending order using insertion sort.
 /// @tparam T Element type.
 /// @param vec Pointer to the array to sort.
@@ -14,16 +12,26 @@ void insertionSort(T *vec, size_t size, int &steps)
 {
     // reset steps
     steps = 0;
-
-    for (int i = 1; i < size; ++i)
+    for (size_t i = 1; i < size; ++i)
     {
-        for (int j = i; j > 0; --j)
+        size_t j = i;
+
+        // Keep bubbling vec[j] left while it's smaller than its predecessor
+        while (j > 0)
         {
+            // compare vec[j-1] and vec[j]
             ++steps;
-            if (vec[j] < vec[j - 1])
-                std::swap(vec[j], vec[j - 1]);
+
+            if (vec[j - 1] > vec[j])
+            {
+                std::swap(vec[j - 1], vec[j]);
+                --j;
+            }
             else
+            {
+                // exit if !(vec[j-1] > vec[j])
                 break;
+            }
         }
     }
     return;

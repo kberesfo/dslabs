@@ -2,8 +2,6 @@
 #ifndef BUBBLE_SORT_H
 #define BUBBLE_SORT_H
 
-#include <vector>
-
 /// @brief Sorts the array in ascending order using bubble sort.
 /// @tparam T Element type.
 /// @param vec Pointer to the array to sort.
