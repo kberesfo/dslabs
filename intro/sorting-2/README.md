@@ -87,8 +87,8 @@ Above improves efficiency because it exits the loop as soon as `X` is found prev
 
 - **Best Case**: 1 step or constant time, `X` is the first letter in the string
 - **Avg Case**: $N/2$ steps linear time, `X` is near the middle of the string and we iterate through ~ N/2 elements before finding `X`.
-- **Worst Case**: $N$ steps linear time, `X` is the last character in the string and we iterate through all elements before finding `X`.
+- **Worst Case**: $N$ steps linear time, `X` is not present in the string string and we iterate through all elements before returning `false`.
 
 ## Video
 
-[Canvas Video]()
+[Canvas Video](https://sdccd.us-west-2.instructuremedia.com/embed/b6f764c7-ce2f-4905-9e84-ea52b0361feb)
