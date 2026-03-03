@@ -22,7 +22,7 @@ int HashTable::hashFunction(const string &key, int mod) const
         hash = hash * prime + c;
     }
 
-    return hash % mod;
+    return static_cast<int>((hash % mod + mod) % mod);
 }
 
 int HashTable::hashFunction(const string &key) const
@@ -104,8 +104,13 @@ int HashTable::search(const string &key) const
 
 double HashTable::loadFactor() const
 {
+    // prevent weirdness
+    if (isEmpty())
+        return 0.0;
+
     // calc load factor n/m
-    return static_cast<double>(currentSize) / static_cast<double>(capacity);
+    return static_cast<double>(currentSize) /
+           static_cast<double>(capacity);
 }
 
 int HashTable::size() const
@@ -120,16 +125,11 @@ bool HashTable::isEmpty() const
     return currentSize == 0;
 }
 
-void HashTable::printTable() const
-{
-    // TODO print
-}
-
 void HashTable::rehash()
 {
     int newCapacity = capacity * 2;
     int newCollisionCount = 0;
-    // new bucket array
+    // new bucket vector
     std::vector<std::list<std::pair<std::string, int>>> tmpTable(newCapacity);
 
     for (const auto &bucket : table)
@@ -156,4 +156,43 @@ void HashTable::rehash()
     capacity = newCapacity;
     // update collision count
     collisionCount = newCollisionCount;
+}
+
+std::ostream &operator<<(std::ostream &os, const HashTable &ht)
+{
+    // init max bucket
+    int maxBucket = 0;
+
+    // iterate over ht
+    for (int i = 0; i < ht.capacity; ++i)
+    {
+        // print index
+        os << "[" << i << "] ";
+        int bucketSize = 0;
+        // iterate over kv in idx
+        for (const auto &kv : ht.table[i])
+        {
+            // print (key, value)
+            os << "(" << kv.first << ", " << kv.second << ") ";
+            ++bucketSize;
+        }
+        // if we find a bigger bucket update max bucket
+        if (bucketSize > maxBucket)
+            maxBucket = bucketSize;
+
+        os << "\n";
+    }
+    // avg bucket size
+    double avgBucketLength =
+        static_cast<double>(ht.currentSize) /
+        static_cast<double>(ht.capacity);
+
+    os << "Size: " << ht.currentSize << "\n";
+    os << "Capacity: " << ht.capacity << "\n";
+    os << "Load Factor: " << ht.loadFactor() << "\n";
+    os << "Collisions: " << ht.collisionCount << "\n";
+    os << "Max Bucket Size: " << maxBucket << "\n";
+    os << "Avg Bucket Length: " << avgBucketLength << "\n";
+
+    return os;
 }
