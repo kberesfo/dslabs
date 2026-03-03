@@ -6,7 +6,7 @@ Understand the working of insertion sort algorithm algorithms and evaluate the a
 
 ## Task
 
-1. Proof that, under the average-case scenario, insertion sort has time complexity $O(N^2)$.
+1. Proof that, under the average-case scenario, insertion sort has time complexity $O(N^2)$. Draw a clear figure and show all the operations clearly.
 
    **Average-case time complexity of insertion sort** (Note: these are assuming just comparisons)
 
