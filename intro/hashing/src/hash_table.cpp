@@ -8,7 +8,8 @@ HashTable::HashTable(int size)
     : capacity(size),
       currentSize(0),
       collisionCount(0),
-      table(size)
+      table(size),
+      debugOut(nullptr)
 {
 }
 
@@ -21,8 +22,18 @@ int HashTable::hashFunction(const string &key, int mod) const
     {
         hash = hash * prime + c;
     }
-
-    return static_cast<int>((hash % mod + mod) % mod);
+    int r = static_cast<int>(hash % mod);
+    int idx = static_cast<int>((hash % mod + mod) % mod);
+    // looking for bad keys
+    if (debugOut && r < 0)
+    {
+        (*debugOut) << "NEG remainder key=" << key
+                    << " hash=" << hash
+                    << " mod=" << mod
+                    << " r=" << r
+                    << " fixedIdx=" << idx << "\n";
+    }
+    return idx;
 }
 
 int HashTable::hashFunction(const string &key) const
@@ -160,39 +171,44 @@ void HashTable::rehash()
 
 std::ostream &operator<<(std::ostream &os, const HashTable &ht)
 {
-    // init max bucket
     int maxBucket = 0;
+    int nonEmptyBuckets = 0;
 
-    // iterate over ht
     for (int i = 0; i < ht.capacity; ++i)
     {
-        // print index
         os << "[" << i << "] ";
+
         int bucketSize = 0;
-        // iterate over kv in idx
         for (const auto &kv : ht.table[i])
         {
-            // print (key, value)
             os << "(" << kv.first << ", " << kv.second << ") ";
             ++bucketSize;
         }
-        // if we find a bigger bucket update max bucket
-        if (bucketSize > maxBucket)
-            maxBucket = bucketSize;
+
+        if (bucketSize > 0)
+        {
+            ++nonEmptyBuckets;
+            if (bucketSize > maxBucket)
+                maxBucket = bucketSize;
+        }
 
         os << "\n";
     }
-    // avg bucket size
-    double avgBucketLength =
-        static_cast<double>(ht.currentSize) /
-        static_cast<double>(ht.capacity);
+
+    double loadFactor = ht.loadFactor(); // n/m
+    double avgAllBuckets = loadFactor;   // same thing
+    double avgNonEmpty = (nonEmptyBuckets == 0)
+                             ? 0.0
+                             : static_cast<double>(ht.currentSize) /
+                                   static_cast<double>(nonEmptyBuckets);
 
     os << "Size: " << ht.currentSize << "\n";
     os << "Capacity: " << ht.capacity << "\n";
-    os << "Load Factor: " << ht.loadFactor() << "\n";
+    os << "Load Factor (n/m): " << loadFactor << "\n";
     os << "Collisions: " << ht.collisionCount << "\n";
     os << "Max Bucket Size: " << maxBucket << "\n";
-    os << "Avg Bucket Length: " << avgBucketLength << "\n";
+    os << "Avg Bucket Length (all buckets): " << avgAllBuckets << "\n";
+    os << "Avg Bucket Length (non-empty): " << avgNonEmpty << "\n";
 
     return os;
 }

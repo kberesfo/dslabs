@@ -6,11 +6,13 @@
 #include <list>
 #include <string>
 #include <utility>
+#include <ostream>
 
 class HashTable
 {
 private:
     std::vector<std::list<std::pair<std::string, int>>> table;
+    std::ostream *debugOut = nullptr;
     int currentSize;
     int capacity;
     int collisionCount;
@@ -20,8 +22,8 @@ private:
     void rehash();
 
 public:
-    /// @brief
-    /// @param size
+    /// @brief constructor for the HashTable
+    /// @param size defaults to 11
     HashTable(int size = 11);
     /// @brief Inserts a key-value pair into the hash table.
     /// If the key already exists, its value is updated.
@@ -38,16 +40,22 @@ public:
     /// @return The associated value if found, otherwise -1.
     int search(const std::string &key) const;
     /// @brief Returns the current load factor (n / m).
-    /// @return
+    /// @return the current load factor 0.0 if empty n/m otherwise
     double loadFactor() const;
-    /// @brief
-    /// @return
+    /// @brief get the size of the HashTable
+    /// @return size of the HashTable
     int size() const;
-    /// @brief
-    /// @return
+    /// @brief retruns true if the HashTable is empty
+    /// @return boolean if the HashTable is empty
     bool isEmpty() const;
-    /// @brief
-    void printTable() const;
+    /// @brief this is replaces the printTable method
+    /// @param os outstream
+    /// @param ht an instance of our hashtable
+    /// @return the ostream
+    friend std::ostream &operator<<(std::ostream &os, const HashTable &ht);
+
+    void setDebugStream(std::ostream &os) { debugOut = &os; }
+    void clearDebugStream() { debugOut = nullptr; }
 };
 
 #endif
