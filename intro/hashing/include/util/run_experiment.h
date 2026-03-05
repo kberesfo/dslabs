@@ -48,17 +48,14 @@ inline void runExperiment(std::ostream &os,
     }
 
     int missingVal = ht.search(missingKey);
-    if (missingVal != -1)
-    {
-        os << "Search missing key \"" << missingKey << "\" -> " << missingVal << "\n\n";
-    }
+    os << "Search for missing key (Expect Empty): ";
+    if (missingVal == -1)
+        os << "returned empty\n";
     else
-    {
-        os << "Search returned empty\n\n";
-    }
+        os << "FOUND value=" << missingVal << " (unexpected)\n";
 
     // Remove some keys and verify correctness
-    int toRemove = std::min(10, static_cast<int>(keys.size()));
+    int toRemove = 10;
     int removed = 0;
 
     for (int i = 0; i < toRemove; ++i)
