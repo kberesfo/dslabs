@@ -149,7 +149,7 @@ Write a short explanation (1--2 paragraphs) describing what you observe.
 
 ### Overview
 
-After running these experiments it's obvious the impact the hashing algorithm and the number of bins have on the hash table. The fewer the number of bins and the more similar the keys the more likely their are to be collisions.
+After running these experiments it's obvious the impact the hashing algorithm and the number of bins have on the hash table. The fewer the number of bins and the more similar the keys, the more likely collisions will occur.
 
 ## Theoretical Collision Analysis
 
