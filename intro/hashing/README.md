@@ -169,7 +169,9 @@ $$\binom{n}{2} = \frac{n(n-1)}{2}$$
 
 Since each pair collides with probability $ 1/m $, the expected number of colliding pairs is:
 
-$$\mathbb{E}[\text{colliding pairs}] = \frac{n(n-1)}{2m}$$
+## $$\mathbb{E}[\text{colliding pairs}] = \frac{n(n-1)}{2m}$$
+
+#### Applying the formula
 
 For this experiment:
 
@@ -245,9 +247,7 @@ So the expected number of non-empty buckets is
 
 $$176(1 - 0.566) \approx 176(0.434) \approx 76.4$$
 
----
-
-### Expected Insert Collisions
+#### Expected Insert Collisions
 
 Insert collisions occur whenever a key is inserted into a bucket that already contains a key.  
 Since the first key placed in each bucket does not cause a collision, the expected number of insert collisions is
