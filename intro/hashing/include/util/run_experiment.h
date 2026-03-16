@@ -13,9 +13,10 @@
 /// @param os outstream
 /// @param label the name of the experiment to run
 /// @param keys a pointer to the keys
-inline void runExperiment(std::ostream &os,
-                          const std::string &label,
-                          const std::vector<std::string> &keys)
+inline void runExperiment(
+    std::ostream &os,
+    const std::string &label,
+    const std::vector<std::string> &keys)
 {
     os << "\n==============================\n";
     os << label << "\n";

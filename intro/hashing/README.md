@@ -121,8 +121,8 @@ In `main()`:
     - [Load factor](./src/hash_table.cpp)
     - [Total collisions](./src/hash_table.cpp)
 3.  Search for:
-    - [Existing key](./include/util/run_experiment.h.cpp)
-    - [Non-existing key](./include/util/run_experiment.h.cpp)
+    - [Existing key](./include/util/run_experiment.h)
+    - [Non-existing key](./include/util/run_experiment.h)
 4.  Remove some keys and verify correctness
 
 ## Part 6 -- Experimental Analysis
