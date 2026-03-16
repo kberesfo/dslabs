@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 
-    Stack s;
+    Stack<int> s;
 
     s.push(10);
     s.push(20);
@@ -15,10 +15,15 @@ int main()
     s.push(40);
 
     cout << s << "\n";
-
-    s.pop();
-
-    cout << "Top element: " << s.peek() << endl;
+    try
+    {
+        s.pop();
+        cout << "Top element: " << s.peek() << "\n\n";
+    }
+    catch (const std::invalid_argument &e)
+    {
+        cerr << "Error: " << e.what() << "\n";
+    }
 
     cout << s << "\n"
          << endl;
