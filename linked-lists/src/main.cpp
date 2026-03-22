@@ -9,6 +9,16 @@ int main()
 
     Stack<int> s;
 
+    try
+    {
+        s.pop();
+        cout << "Top element: " << s.peek() << "\n\n";
+    }
+    catch (const std::invalid_argument &e)
+    {
+        cout << "Error: " << e.what() << "\n\n";
+    }
+
     s.push(10);
     s.push(20);
     s.push(30);
@@ -22,7 +32,7 @@ int main()
     }
     catch (const std::invalid_argument &e)
     {
-        cerr << "Error: " << e.what() << "\n";
+        cout << "Error: " << e.what() << "\n";
     }
 
     cout << s << "\n"

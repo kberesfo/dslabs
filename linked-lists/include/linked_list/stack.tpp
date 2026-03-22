@@ -8,12 +8,7 @@ Stack<T>::Stack()
 template <typename T>
 bool Stack<T>::isEmpty() const
 {
-    if (top == nullptr)
-    {
-        return true;
-    }
-
-    return false;
+    return top == nullptr;
 }
 
 template <typename T>
@@ -34,19 +29,23 @@ T Stack<T>::pop()
     {
         throw std::invalid_argument("Stack Underflow");
     }
-
+    // create a temp node pointer
     Node<T> *temp = top;
+    // set top to the next element in the list
     top = top->next;
+    // get the value from temp
     T val = temp->data;
-
+    // free up the memory
     delete temp;
     size -= 1;
+    // return the value
     return val;
 }
 
 template <typename T>
 void Stack<T>::push(T value)
 {
+    // create a new value and store it at the top of the stack
     Node<T> *temp = new Node<T>{value, nullptr};
     temp->next = top;
     top = temp;
