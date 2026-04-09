@@ -4,7 +4,7 @@
 
 class Node
 {
-    friend class Tree;
+    friend class BinaryTree;
 
 private:
     Node *leftNode = nullptr;

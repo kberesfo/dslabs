@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     vector<int> inputVec{1, 5, 9, 2, 4, 10, 6, 3, 8};
-    Tree tree = Tree();
+    BinaryTree tree = BinaryTree();
     int steps = 0;
 
     for (int i = 0; i < inputVec.size(); ++i)
@@ -20,6 +20,15 @@ int main()
     cout << "It took: " << steps << " steps to find 10\n";
     tree.find(40, steps);
     cout << "It took: " << steps << " steps to search for 40\n\n";
+
+    tree.postOrder(cout);
+
+    cout << "\n";
+    tree.preOrder(cout);
+    cout << "\n";
+
+    tree.levelOrder(cout);
+    cout << endl;
 
     return 0;
 }
