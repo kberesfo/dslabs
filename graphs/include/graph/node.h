@@ -2,26 +2,26 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <vector>
+#include <unordered_set>
 
 class Node
 {
-    friend class GraphList;
-    friend class GraphMatrix;
+    friend class ListGraph;
+    friend class MatrixGraph;
 
 private:
+    static int counter;
     int id;
     int data;
-    std::vector<Node *> neighbors;
-    static int counter;
+    std::unordered_set<Node *> neighbors;
 
 public:
     Node(int data) : data(data), id(counter++) {};
-    
-    int getId() const;
-    int getData() const;
 
-    static void resetCounter();
+    int getId() const { return id; }
+    int getData() const { return data; }
+
+    static void resetCounter() { counter = 0; };
 };
 
 #endif
