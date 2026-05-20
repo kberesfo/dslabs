@@ -34,6 +34,12 @@ We can use a nested-loops approach, comparing each player from one array against
 
 **Your job is to optimize the function so that it can run just $O(N + M)$.**
 
+### [Implementation](./src/task1/task1.cpp)
+
+### Explanation
+
+This i used an unordered set to achieve the desired $O(N+M)$ time complexity. I iterated over the first array of players adding each player to the set. Then i iterated over the second array of players and checked for membership in the player_set, if the player existed in the given set then I added that player to the returned string array. Each array was only iterated over a single time ensuring the desired $O(N+M)$ time complexity.
+
 ## Task 2
 
 You’re writing a function that accepts an array of distinct integers from 0, 1, 2, 3...up to N. However, the array will be missing one integer, and your function is to _return the missing one._
@@ -58,6 +64,12 @@ Using a nested-loops approach would take up to $O(N^2)$.
 
 **Your job is to optimize the code so that it has a runtime of $O(N)$.**
 
+### [Implementation](./src/task2/task2.cpp)
+
+### Explanation
+
+For this I used the size of the array to determine what the "theoretical sum" of the array should be, then i subtracted the actual sum of the array to determine the missing element. **NOTE** this makes the assumption that the series starts with 0. This solution would not be appropriate if the series started at a non-zero number. Because the array is only iterated over a single time it has a $O(N)$ time complexity
+
 ## Task 3
 
 You’re working on some more stock-prediction software. The function you’re writing accepts an array of predicted prices for a particular stock over the course of time.
@@ -80,6 +92,12 @@ Now, we could use nested loops to find the profit of every possible buy and sell
 
 **Your job is to optimize the code so that the function clocks in at just $O(N)$.**
 
+### [Implementation](./src/task3/task3.cpp)
+
+### Explanation
+
+For this solution we use a current_low variable to track the lowest price we have seen so far and only update it if the "profit" we could make would be larger than our current max profit. this ensures that we don't run into the issue of selling before we purchase. This solution achieves the $O(N)$ desired time complexity because we only iterate over the array a single time.
+
 ## Task 4
 
 You’re writing a function that accepts an array of numbers and computes the highest product of any two numbers in the array. At first glance, this is easy, as we can just find the two greatest numbers and multiply them. However, our array can contain negative numbers and look like this:
@@ -89,6 +107,12 @@ You’re writing a function that accepts an array of numbers and computes the hi
 ```
 
 We could use nested loops to multiply every possible pair of numbers, but this would take $O(N^2)$ time. **Your job is to optimize the function so that it’s a speedy $O(N)$.**
+
+### [Implementation](./src/task4/task4.cpp)
+
+### Explanation
+
+For this i used four variables to track the largest, second largest, smallest and second smallest values. I then iterated over the array updating the those variables giving priority to the largest and smallest then the second largest and smallest. at then end i multiplied both the values together ensuring the largest possible value was returned as the answer. This solution achieves the desired $O(N)$ time complexity because we only iterate over the array a single time.
 
 ## Task 5
 
@@ -105,6 +129,12 @@ You are to write a function that sorts these readings from lowest to highest.
 Using a classic sorting algorithm such as Quicksort would take $O(N log N)$. However, in this case, writing a faster sorting algorithm is possible.
 
 Yes, that’s right. Even though you’ve learned that the fastest sorts are $O(N log N)$, this case is different. Why? In this case, there are limited possibilities for the readings. In such a case, we can sort these values in $O(N)$. It may be $N$ multiplied by a constant, but that’s still considered $O(N)$.
+
+### [Implementation](./src/task5/task5.cpp)
+
+### Explanation
+
+For this task I used a "bin" approach to achieve the linear $O(N)$ time complexity. First we instantiate a vector that spans the delta between the min and max values, in this case 97.0 and 99.0 then we multiplied them by 10 to get whole numbers leaving us with 20 bins. Then we use the formula $(n * 10) - (min * 10)$ to get the index of each bin and increment it for each occurrence. We can then iterate over the original array updating each subsequent index using the frequency of each bin.
 
 ## Task 6
 
@@ -125,3 +155,9 @@ One more example:
 This array’s longest sequence is 11-12-13-14-15, so the function would return 5.
 
 **Your job is to optimize the function so that it takes $O(N)$ time.**
+
+### [Implementation](./src/task6/task6.cpp)
+
+### Explanation
+
+For this task I chose to use a set data structure to achieve the $O(1)$ time complexity requirement. This data structure gives us $O(1)$ access to each element and ensures that each number only exists once. We then iterate over each int in the set, if n-1 exists in the set then it is not the "head" of the longest sequence and we move on. If n-1 dne in the set then we continue iterating over the sequence, incrementing a counter, until we reach the end of the sequence. This allows us to check each sequence and compare the longest continuous sequence.
