@@ -2,42 +2,37 @@
 
 int task_4(std::vector<int> &v)
 {
-    if (!v.size())
+    if (v.size() < 2)
         return 0;
 
-    int largest_pos = std::max(v[0], v[1]);
-    int second_pos = std::min(v[0], v[1]);
+    int highest = std::max(v[0], v[1]);
+    int second_highest = std::min(v[0], v[1]);
+    
+    int lowest = std::min(v[0], v[1]);
+    int second_lowest = std::max(v[0], v[1]);
 
-    int smallest_neg = std::min(v[0], v[1]);
-    int second_neg = std::max(v[0], v[1]);
-
-    for (auto i : v)
+    for (auto i = 2; i < v.size(); ++i)
     {
-        if (i > 0)
+        if (v[i] >= highest)
         {
-            if (largest_pos < i)
-            {
-                second_pos = largest_pos;
-                largest_pos = i;
-            }
-            else if (second_pos < i)
-            {
-                second_pos = i;
-            }
+            second_highest = highest;
+            highest = v[i];
         }
-        else
+        else if (v[i] > second_highest)
         {
-            if (smallest_neg > i)
-            {
-                second_neg = smallest_neg;
-                smallest_neg = i;
-            }
-            else if (second_neg > i)
-            {
-                second_neg = i;
-            }
+            second_highest = v[i];
+        }
+
+        if (v[i] <= lowest)
+        {
+            second_lowest = lowest;
+            lowest = v[i];
+        }
+        else if (v[i] < second_lowest)
+        {
+            second_lowest = v[i];
         }
     }
 
-    return (largest_pos * second_pos > smallest_neg * second_neg) ? largest_pos * second_pos : smallest_neg * second_neg;
+    return std::max(highest * second_highest, lowest * second_lowest);
 }

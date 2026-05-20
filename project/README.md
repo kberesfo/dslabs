@@ -96,7 +96,7 @@ Now, we could use nested loops to find the profit of every possible buy and sell
 
 ### Explanation
 
-For this solution we use a current_low variable to track the lowest price we have seen so far and only update it if the "profit" we could make would be larger than our current max profit. this ensures that we don't run into the issue of selling before we purchase. This solution achieves the $O(N)$ desired time complexity because we only iterate over the array a single time.
+For this solution we use a current_low variable to track the lowest price we have seen so far and only updates the profit if the current value - curr_low yields a larger profit than our current max profit. this ensures that we don't run into the issue of selling before we purchase. This solution achieves the $O(N)$ desired time complexity because we only iterate over the array a single time.
 
 ## Task 4
 
@@ -134,7 +134,7 @@ Yes, that’s right. Even though you’ve learned that the fastest sorts are $O(
 
 ### Explanation
 
-For this task I used a "bin" approach to achieve the linear $O(N)$ time complexity. First we instantiate a vector that spans the delta between the min and max values, in this case 97.0 and 99.0 then we multiplied them by 10 to get whole numbers leaving us with 20 bins. Then we use the formula $(n * 10) - (min * 10)$ to get the index of each bin and increment it for each occurrence. We can then iterate over the original array updating each subsequent index using the frequency of each bin.
+For this task I used a "bin" approach to achieve the linear $O(N)$ time complexity. First we instantiate a vector that spans the delta between the min and max values, in this case 97.0 and 99.0 then we multiplied them by 10 to get whole numbers leaving us with 21 bins. Then we use the formula $(n * 10) - (min * 10)$ to get the index of each bin and increment it for each occurrence. We can then iterate over the original array updating each subsequent index using the frequency of each bin.
 
 ## Task 6
 
